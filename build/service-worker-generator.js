@@ -12,16 +12,17 @@ self.globsToWatch = [
     "src/**/*.jpg",
     "src/**/*.png",
     "src/**/*.gif",
-    "src/**/*.ico",
-    "src/**/*.json"
+    "src/**/*.ico"
 ];
 
-self.writeServiceWorkerFile = function (rootDir, handleFetch) {
+self.serviceWorkerFile = 'src/service-worker.js';
+
+self.writeServiceWorkerFile = function () {
   var packageJson = JSON.parse(fs.readFileSync('./package.json'));
 
   var config = {
     cacheId: packageJson.name,
-    handleFetch: handleFetch,
+    handleFetch: true,
     logger: console.log,
     runtimeCaching: [{
       urlPattern: /runtime-caching/,
@@ -33,28 +34,23 @@ self.writeServiceWorkerFile = function (rootDir, handleFetch) {
         }
       }
     }],
-    staticFileGlobs: [
-      rootDir + '/css/**.css',
-      rootDir + '/**.html',
-      rootDir + '/images/**.*',
-      rootDir + '/js/**.js'
-    ],
-    stripPrefix: rootDir + '/',
+    staticFileGlobs: self.globsToWatch,
+    stripPrefix: 'src/',
     verbose: true
   };
 
-  swPrecache.write(path.join(rootDir, 'service-worker.js'), config);    
+  swPrecache.write(self.serviceWorkerFile, config);    
 }
 
 self.watch = function() {
     console.log("ServiceWorker generator watching files");
-    chokidar.watch(self.globsToWatch, {}).on('all', (event, path) => {
+    chokidar.watch(self.globsToWatch, {ignored: /service-worker\.js/}).on('all', (event, path) => {
       self.build();
     });
 }
 
 self.build = function() {
-    self.writeServiceWorkerFile("src", true);
+    self.writeServiceWorkerFile();
 }
 
 module.exports = self;
