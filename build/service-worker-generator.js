@@ -11,7 +11,7 @@ self.globsToWatch = [
     "src/**/*.html",
     "src/**/*.jpg",
     "src/**/*.png",
-    "src/**/*.gif",
+    "src/**/*.gif", 
     "src/**/*.ico"
 ];
 

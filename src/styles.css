@@ -1,5 +1,28 @@
-h1 {
-  color: #369;
+html {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  background-color: rgb(20,20,20);
+  color: rgb(200,200,200);
+}
+
+p {
+  font-size: 130%;
+}
+
+#loading {
+  position: fixed;
+  top: -2%;
+  left: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+#loading img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
 }

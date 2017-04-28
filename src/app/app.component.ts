@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `
+    <p>{{name}}</p>
+    Add to your homescreen by dragging down
+  `,
 })
-export class AppComponent  { name = 'Angular Progressive Web App'; }
+export class AppComponent  { name = 'TypeScript Progressive Web App'; }
