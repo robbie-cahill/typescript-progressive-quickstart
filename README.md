@@ -1,38 +1,17 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# TypeScript Progressive Web App
+This is a bootstrap for a TypeScript Progressive Web App.
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+Service workers are auto generated. Note that you will need to click "Update on reload" in the Application tab of Chrome Dev Tools to get the latest code on each refresh.
 
-It's been extended with testing support so you can start writing tests immediately.
+BrowserSync is integrated to automatically detect changes and trigger browser reloads.
 
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
+This is not the ideal setup for your application, but simply a bootstrap to get started quickly. 
 
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+This was built on top of existing code from the Angular 2 Quickstart repo (https://github.com/angular/quickstart).
 
-## Updating to a newer version of the Quickstart Repo
-
-From time to time the QuickStart will be enhanced with support for new features or to reflect
-changes to the [official Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
-
-You can update your existing project to an up-to-date QuickStart by following these instructions:
-- Create a new project using the [instructions below](#create-a-new-project-based-on-the-quickstart)
-- Copy the code you have in your project's `main.ts` file onto `src/app/main.ts` in the new project
-- Copy your old `app` folder into `src/app`
-- Delete `src/app/main.ts` if you have one (we now use `src/main.ts` instead)
-- Copy your old `index.html`, `styles.css` and `tsconfig.json` into `src/`
-- Install all your third party dependencies
-- Copy your old `e2e/` folder into `e2e/`
-- Copy over any other files you added to your project
-- Copy your old `.git` folder into your new project's root
-
-Now you can continue working on the new project.
+To get started, clone the repo and run `npm start`. Chokidar will detect changes and regenerate service workers using sw-precache.
 
 ## Prerequisites
-
-Node.js and npm are essential to Angular development. 
     
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
 Get it now</a> if it's not already installed on your machine.
@@ -51,7 +30,6 @@ git clone https://github.com/angular/quickstart  my-proj
 cd my-proj
 ```
 
-We have no intention of updating the source on `angular/quickstart`.
 Discard the `.git` folder..
 ```shell
 rm -rf .git  # OS/X (bash)
@@ -124,8 +102,8 @@ You're ready to write your application.
 We've captured many of the most useful commands in npm scripts defined in the `package.json`:
 
 * `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run build` - runs the TypeScript compiler once.
-* `npm run build:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
+* `npm run build` - runs the TypeScript compiler once and generates a service worker
+* `npm run build:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them. The service worker is automatically regenerated as each cacheable asset changes.
 * `npm run serve` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
 [John Papa](https://github.com/johnpapa) and
 [Christopher Martin](https://github.com/cgmartin)
